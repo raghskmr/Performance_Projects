@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.4.3">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <net.xmeter.samplers.ConnectSampler guiclass="net.xmeter.gui.ConnectSamplerUI" testclass="net.xmeter.samplers.ConnectSampler" testname="MQTT Connect" enabled="true">
+          <stringProp name="mqtt.server">mqtt-dev.esper.cloud</stringProp>
+          <stringProp name="mqtt.port">8883</stringProp>
+          <stringProp name="mqtt.version">3.1</stringProp>
+          <stringProp name="mqtt.conn_timeout">10</stringProp>
+          <stringProp name="mqtt.protocol">SSL</stringProp>
+          <stringProp name="mqtt.ws_path"></stringProp>
+          <boolProp name="mqtt.dual_ssl_authentication">false</boolProp>
+          <stringProp name="mqtt.clientcert_file_path"></stringProp>
+          <stringProp name="mqtt.clientcert_password"></stringProp>
+          <stringProp name="mqtt.user_name">shoonya</stringProp>
+          <stringProp name="mqtt.password">reset123$</stringProp>
+          <stringProp name="mqtt.client_id_prefix">conn_</stringProp>
+          <boolProp name="mqtt.client_id_suffix">true</boolProp>
+          <stringProp name="mqtt.conn_keep_alive">300</stringProp>
+          <stringProp name="mqtt.conn_attampt_max">0</stringProp>
+          <stringProp name="mqtt.reconn_attampt_max">0</stringProp>
+          <stringProp name="mqtt.conn_clean_session">true</stringProp>
+        </net.xmeter.samplers.ConnectSampler>
+        <hashTree/>
+        <net.xmeter.samplers.PubSampler guiclass="net.xmeter.gui.PubSamplerUI" testclass="net.xmeter.samplers.PubSampler" testname="MQTT Pub Sampler" enabled="false">
+          <stringProp name="mqtt.topic_name">test_topic</stringProp>
+          <stringProp name="mqtt.qos_level">0</stringProp>
+          <boolProp name="mqtt.add_timestamp">false</boolProp>
+          <stringProp name="mqtt.message_type">String</stringProp>
+          <stringProp name="mqtt.message_type_fixed_length">1024</stringProp>
+          <stringProp name="mqtt.message_to_sent">[DeviceDataEntity(createdTime=1670320532976, type=102, data=DeviceData(created_time=1670320532976, labels=null, type=102, metrics={available_ram_measured=NestedDeviceData(labels=null, value=944.0, unit=MB), available_internal_storage_measured=NestedDeviceData(labels=null, value=5918.0, unit=MB), os_occupied_storage_measured=NestedDeviceData(labels=null, value=2072.0, unit=MB)}, name=memory, category=system, source=io.shoonya.shoonyadpc), stringMeta=944MB|5918MB|2072MB, topic=system, id=1, synced=false), DeviceDataEntity(createdTime=1670320534766, type=117, data=DeviceData(created_time=1670320534766, labels=null, type=117, metrics={battery_capacity=NestedDeviceData(labels=null, value=100.0, unit=null), battery_power_source=NestedDeviceData(labels=null, value=0.0, unit=null), battery_status=NestedDeviceData(labels=null, value=4.0, unit=null)}, name=battery, category=system, source=io.shoonya.shoonyadpc), stringMeta=100|0|4, topic=system, id=9, synced=false), DeviceDataEntity(createdTime=1670320534773, type=118, data=DeviceData(created_time=1670320534773, labels=null, type=118, metrics={display_screen_on=NestedDeviceData(labels=null, value=1.0, unit=null)}, name=display, category=system, source=io.shoonya.shoonyadpc), stringMeta=[1], topic=system, id=10, synced=false), DeviceDataEntity(createdTime=1670320534805, type=119, data=DeviceData(created_time=1670320534805, labels=null, type=119, metrics={network_operator=NestedDeviceData(labels=null, value=[Android], unit=null), sim_operator=NestedDeviceData(labels=null, value=[T-Mobile], unit=null), number_of_sim=NestedDeviceData(labels=null, value=1.0, unit=null), network_type=NestedDeviceData(labels=null, value=4G LTE, unit=null), mobile_network_status=NestedDeviceData(labels=null, value=CONNECTED, unit=null), wifi_SSID=NestedDeviceData(labels=null, value=&quot;AndroidWifi&quot;, unit=null), wifi_signal_strength=NestedDeviceData(labels=null, value=4.0, unit=null), link_speed=NestedDeviceData(labels=null, value=52.0, unit=null), bssid=NestedDeviceData(labels=null, value=02:15:b2:00:01:00, unit=null), wifi_frequency=NestedDeviceData(labels=null, value=2447.0, unit=null), interface_name=NestedDeviceData(labels=null, value=wlan0, unit=null), dns1=NestedDeviceData(labels=null, value=10.0.2.3, unit=null), mobile_ipv4=NestedDeviceData(labels=null, value=[10.0.2.16], unit=null), mobile_ipv6=NestedDeviceData(labels=null, value=[FE80::15:B2FF:FE00:0, FEC0::15:B2FF:FE00:0, FEC0::7C6C:1ED0:5B39:A5D], unit=null)}, name=network_signal_strength_and_link_info, category=system, source=io.shoonya.shoonyadpc), stringMeta=[Android]|[T-Mobile]|1|4G LTE|CONNECTED|&quot;AndroidWifi&quot;|4|52|02:15:b2:00:01:00|2447|wlan0|10.0.2.3|[10.0.2.16]|[FE80::15:B2FF:FE00:0, FEC0::15:B2FF:FE00:0, FEC0::7C6C:1ED0:5B39:A5D], topic=system, id=11, synced=false), DeviceDataEntity(createdTime=1670320534832, type=121, data=DeviceData(created_time=1670320534832, labels=null, type=121, metrics={mobile_data_download=NestedDeviceData(labels=null, value=5307539.0, unit=null), mobile_data_upload=NestedDeviceData(labels=null, value=79957.0, unit=null), total_data_download=NestedDeviceData(labels=null, value=4.2039541E7, unit=null), total_data_upload=NestedDeviceData(labels=null, value=973483.0, unit=null)}, name=mobile_data, category=system, source=io.shoonya.shoonyadpc), stringMeta=[5307539, 79957, 42039541, 973483], topic=system, id=13, synced=false), DeviceDataEntity(createdTime=1670320535833, type=121, data=DeviceData(created_time=1670320535833, labels=null, type=121, metrics={mobile_data_download=NestedDeviceData(labels=null, value=5307539.0, unit=null), mobile_data_upload=NestedDeviceData(labels=null, value=79957.0, unit=null), total_data_download=NestedDeviceData(labels=null, value=4.2041622E7, unit=null), total_data_upload=NestedDeviceData(labels=null, value=973997.0, unit=null)}, name=mobile_data, category=system, source=io.shoonya.shoonyadpc), stringMeta=[5307539, 79957, 42041622, 973997], topic=system, id=16, synced=false), DeviceDataEntity(createdTime=1670320534847, type=123</stringProp>
+          <boolProp name="mqtt.retained_message">false</boolProp>
+        </net.xmeter.samplers.PubSampler>
+        <hashTree/>
+        <net.xmeter.samplers.PubSampler guiclass="net.xmeter.gui.PubSamplerUI" testclass="net.xmeter.samplers.PubSampler" testname="MQTT Pub Sampler" enabled="true">
+          <stringProp name="mqtt.topic_name">test_topic</stringProp>
+          <stringProp name="mqtt.qos_level">0</stringProp>
+          <boolProp name="mqtt.add_timestamp">false</boolProp>
+          <stringProp name="mqtt.message_type">String</stringProp>
+          <stringProp name="mqtt.message_type_fixed_length">1024</stringProp>
+          <stringProp name="mqtt.message_to_sent">{
+  &quot;meta_data&quot;: {
+    &quot;device_id&quot;: {
+      &quot;value&quot;: &quot;99b5b8a3-ef83-4a48-b487-ce2669006f2b&quot;
+    },
+    &quot;device_name&quot;: {
+      &quot;value&quot;: &quot;ERR-NLN-AAAXI&quot;
+    },
+    &quot;device_alias&quot;: {},
+    &quot;device_model&quot;: {
+      &quot;value&quot;: &quot;Android SDK built for x86&quot;
+    },
+    &quot;device_brand&quot;: {
+      &quot;value&quot;: &quot;google&quot;
+    },
+    &quot;device_manufacturer&quot;: {
+      &quot;value&quot;: &quot;Google&quot;
+    },
+    &quot;enterprise_id&quot;: {
+      &quot;value&quot;: &quot;a9b7346b-913e-4300-a7f2-92a4eb2fdf68&quot;
+    },
+    &quot;tenant_name&quot;: {
+      &quot;value&quot;: &quot;https://eejbl-api.esper.cloud/&quot;
+    },
+    &quot;policy_id&quot;: {
+      &quot;value&quot;: &quot;&quot;
+    },
+    &quot;android_version&quot;: {
+      &quot;value&quot;: 29
+    },
+    &quot;dpc_version&quot;: {
+      &quot;value&quot;: &quot;v7.9.0&quot;
+    },
+    &quot;provisioning_date&quot;: {
+      &quot;value&quot;: &quot;Tue, 06 Dec 2022 15:25:29 GMT+05:30&quot;
+    },
+    &quot;imei_id1&quot;: {
+      &quot;value&quot;: &quot;358240051111110&quot;
+    },
+    &quot;imei_id2&quot;: {},
+    &quot;latitude&quot;: &quot;37.4219983&quot;,
+    &quot;longitude&quot;: &quot;-122.084&quot;,
+    &quot;altitude&quot;: &quot;5.0&quot;,
+    &quot;synced_time&quot;: 1670320540503,
+    &quot;group_id&quot;: &quot;9318ebbf-e791-45ce-9988-25b90ff46ff7&quot;,
+    &quot;group_name&quot;: &quot;All devices&quot;
+  },
+  &quot;payload&quot;: [
+    {
+      &quot;category&quot;: &quot;system&quot;,
+      &quot;created_time&quot;: 1670320532976,
+      &quot;metrics&quot;: {
+        &quot;available_ram_measured&quot;: {
+          &quot;unit&quot;: &quot;MB&quot;,
+          &quot;value&quot;: 944
+        },
+        &quot;available_internal_storage_measured&quot;: {
+          &quot;unit&quot;: &quot;MB&quot;,
+          &quot;value&quot;: 5918
+        },
+        &quot;os_occupied_storage_measured&quot;: {
+          &quot;unit&quot;: &quot;MB&quot;,
+          &quot;value&quot;: 2072
+        }
+      },
+      &quot;name&quot;: &quot;memory&quot;,
+      &quot;source&quot;: &quot;io.shoonya.shoonyadpc&quot;,
+      &quot;type&quot;: 102
+    },
+    {
+      &quot;category&quot;: &quot;system&quot;,
+      &quot;created_time&quot;: 1670320534766,
+      &quot;metrics&quot;: {
+        &quot;battery_capacity&quot;: {
+          &quot;value&quot;: 100
+        },
+        &quot;battery_power_source&quot;: {
+          &quot;value&quot;: 0
+        },
+        &quot;battery_status&quot;: {
+          &quot;value&quot;: 4
+        }
+      },
+      &quot;name&quot;: &quot;battery&quot;,
+      &quot;source&quot;: &quot;io.shoonya.shoonyadpc&quot;,
+      &quot;type&quot;: 117
+    },
+    {
+      &quot;category&quot;: &quot;system&quot;,
+      &quot;created_time&quot;: 1670320534773,
+      &quot;metrics&quot;: {
+        &quot;display_screen_on&quot;: {
+          &quot;value&quot;: 1
+        }
+      },
+      &quot;name&quot;: &quot;display&quot;,
+      &quot;source&quot;: &quot;io.shoonya.shoonyadpc&quot;,
+      &quot;type&quot;: 118
+    },
+    {
+      &quot;category&quot;: &quot;system&quot;,
+      &quot;created_time&quot;: 1670320534805,
+      &quot;metrics&quot;: {
+        &quot;network_operator&quot;: {
+          &quot;value&quot;: [
+            &quot;Android&quot;
+          ]
+        },
+        &quot;sim_operator&quot;: {
+          &quot;value&quot;: [
+            &quot;T-Mobile&quot;
+          ]
+        },
+        &quot;number_of_sim&quot;: {
+          &quot;value&quot;: 1
+        },
+        &quot;network_type&quot;: {
+          &quot;value&quot;: &quot;4G LTE&quot;
+        },
+        &quot;mobile_network_status&quot;: {
+          &quot;value&quot;: &quot;CONNECTED&quot;
+        },
+        &quot;wifi_SSID&quot;: {
+          &quot;value&quot;: &quot;\&quot;AndroidWifi\&quot;&quot;
+        },
+        &quot;wifi_signal_strength&quot;: {
+          &quot;value&quot;: 4
+        },
+        &quot;link_speed&quot;: {
+          &quot;value&quot;: 52
+        },
+        &quot;bssid&quot;: {
+          &quot;value&quot;: &quot;02:15:b2:00:01:00&quot;
+        },
+        &quot;wifi_frequency&quot;: {
+          &quot;value&quot;: 2447
+        },
+        &quot;interface_name&quot;: {
+          &quot;value&quot;: &quot;wlan0&quot;
+        },
+        &quot;dns1&quot;: {
+          &quot;value&quot;: &quot;10.0.2.3&quot;
+        },
+        &quot;mobile_ipv4&quot;: {
+          &quot;value&quot;: [
+            &quot;10.0.2.16&quot;
+          ]
+        },
+        &quot;mobile_ipv6&quot;: {
+          &quot;value&quot;: [
+            &quot;FE80::15:B2FF:FE00:0&quot;,
+            &quot;FEC0::15:B2FF:FE00:0&quot;,
+            &quot;FEC0::7C6C:1ED0:5B39:A5D&quot;
+          ]
+        }
+      },
+      &quot;name&quot;: &quot;network_signal_strength_and_link_info&quot;,
+      &quot;source&quot;: &quot;io.shoonya.shoonyadpc&quot;,
+      &quot;type&quot;: 119
+    },
+    {
+      &quot;category&quot;: &quot;system&quot;,
+      &quot;created_time&quot;: 1670320534832,
+      &quot;metrics&quot;: {
+        &quot;mobile_data_download&quot;: {
+          &quot;value&quot;: 5307539
+        },
+        &quot;mobile_data_upload&quot;: {
+          &quot;value&quot;: 79957
+        },
+        &quot;total_data_download&quot;: {
+          &quot;value&quot;: 42039541
+        },
+        &quot;total_data_upload&quot;: {
+          &quot;value&quot;: 973483
+        }
+      },
+      &quot;name&quot;: &quot;mobile_data&quot;,
+      &quot;source&quot;: &quot;io.shoonya.shoonyadpc&quot;,
+      &quot;type&quot;: 121
+    },
+    {
+      &quot;category&quot;: &quot;system&quot;,
+      &quot;created_time&quot;: 1670320535833,
+      &quot;metrics&quot;: {
+        &quot;mobile_data_download&quot;: {
+          &quot;value&quot;: 5307539
+        },
+        &quot;mobile_data_upload&quot;: {
+          &quot;value&quot;: 79957
+        },
+        &quot;total_data_download&quot;: {
+          &quot;value&quot;: 42041622
+        },
+        &quot;total_data_upload&quot;: {
+          &quot;value&quot;: 973997
+        }
+      },
+      &quot;name&quot;: &quot;mobile_data&quot;,
+      &quot;source&quot;: &quot;io.shoonya.shoonyadpc&quot;,
+      &quot;type&quot;: 121
+    },
+    {
+      &quot;category&quot;: &quot;system&quot;,
+      &quot;created_time&quot;: 1670320534847,
+      &quot;metrics&quot;: {
+        &quot;input_devices&quot;: {
+          &quot;value&quot;: [
+            &quot;VIRTUAL&quot;,
+            &quot;QWERTY2&quot;,
+            &quot;VIRTIO_INPUT_MULTI_TOUCH_6&quot;,
+            &quot;VIRTIO_INPUT_MULTI_TOUCH_3&quot;,
+            &quot;VIRTIO_INPUT_MULTI_TOUCH_10&quot;,
+            &quot;VIRTIO_INPUT_MULTI_TOUCH_4&quot;,
+            &quot;VIRTIO_INPUT_MULTI_TOUCH_1&quot;,
+            &quot;VIRTIO_INPUT_MULTI_TOUCH_8&quot;,
+            &quot;VIRTIO_INPUT_MULTI_TOUCH_11&quot;,
+            &quot;VIRTIO_INPUT_MULTI_TOUCH_5&quot;,
+            &quot;VIRTIO_INPUT_MULTI_TOUCH_2&quot;,
+            &quot;POWER BUTTON&quot;,
+            &quot;VIRTIO_INPUT_MULTI_TOUCH_7&quot;,
+            &quot;VIRTIO_INPUT_MULTI_TOUCH_9&quot;,
+            &quot;AT TRANSLATED SET 2 KEYBOARD&quot;,
+            &quot;GOLDFISH_ROTARY&quot;
+          ]
+        }
+      },
+      &quot;name&quot;: &quot;input_devices_name&quot;,
+      &quot;source&quot;: &quot;io.shoonya.shoonyadpc&quot;,
+      &quot;type&quot;: 123
+    }
+  ]
+}</stringProp>
+          <boolProp name="mqtt.retained_message">false</boolProp>
+        </net.xmeter.samplers.PubSampler>
+        <hashTree/>
+        <org.apache.jmeter.protocol.mqtt.sampler.PublisherSampler guiclass="org.apache.jmeter.protocol.mqtt.control.gui.MQTTPublisherGui" testclass="org.apache.jmeter.protocol.mqtt.sampler.PublisherSampler" testname="MQTT Publisher" enabled="false">
+          <stringProp name="mqtt.broker.url">mqtt-dev.esper.cloud</stringProp>
+          <stringProp name="mqtt.client.id"></stringProp>
+          <stringProp name="mqtt.topic.name">system</stringProp>
+          <boolProp name="mqtt.message.retained">false</boolProp>
+          <boolProp name="mqtt.clean.session">false</boolProp>
+          <stringProp name="mqtt.keep.alive">0</stringProp>
+          <stringProp name="mqtt.auth.username">shoonya</stringProp>
+          <stringProp name="mqtt.auth.password">reset123$</stringProp>
+          <stringProp name="mqtt.qos">mqtt_at_most_once</stringProp>
+          <stringProp name="mqtt.client.type">mqtt_blocking_client</stringProp>
+          <stringProp name="mqtt.message.input.type">mqtt_message_input_type_text</stringProp>
+          <stringProp name="mqtt.message.input.value">[DeviceDataEntity(createdTime=1670320532976, type=102, data=DeviceData(created_time=1670320532976, labels=null, type=102, metrics={available_ram_measured=NestedDeviceData(labels=null, value=944.0, unit=MB), available_internal_storage_measured=NestedDeviceData(labels=null, value=5918.0, unit=MB), os_occupied_storage_measured=NestedDeviceData(labels=null, value=2072.0, unit=MB)}, name=memory, category=system, source=io.shoonya.shoonyadpc), stringMeta=944MB|5918MB|2072MB, topic=system, id=1, synced=false), DeviceDataEntity(createdTime=1670320534766, type=117, data=DeviceData(created_time=1670320534766, labels=null, type=117, metrics={battery_capacity=NestedDeviceData(labels=null, value=100.0, unit=null), battery_power_source=NestedDeviceData(labels=null, value=0.0, unit=null), battery_status=NestedDeviceData(labels=null, value=4.0, unit=null)}, name=battery, category=system, source=io.shoonya.shoonyadpc), stringMeta=100|0|4, topic=system, id=9, synced=false), DeviceDataEntity(createdTime=1670320534773, type=118, data=DeviceData(created_time=1670320534773, labels=null, type=118, metrics={display_screen_on=NestedDeviceData(labels=null, value=1.0, unit=null)}, name=display, category=system, source=io.shoonya.shoonyadpc), stringMeta=[1], topic=system, id=10, synced=false), DeviceDataEntity(createdTime=1670320534805, type=119, data=DeviceData(created_time=1670320534805, labels=null, type=119, metrics={network_operator=NestedDeviceData(labels=null, value=[Android], unit=null), sim_operator=NestedDeviceData(labels=null, value=[T-Mobile], unit=null), number_of_sim=NestedDeviceData(labels=null, value=1.0, unit=null), network_type=NestedDeviceData(labels=null, value=4G LTE, unit=null), mobile_network_status=NestedDeviceData(labels=null, value=CONNECTED, unit=null), wifi_SSID=NestedDeviceData(labels=null, value=&quot;AndroidWifi&quot;, unit=null), wifi_signal_strength=NestedDeviceData(labels=null, value=4.0, unit=null), link_speed=NestedDeviceData(labels=null, value=52.0, unit=null), bssid=NestedDeviceData(labels=null, value=02:15:b2:00:01:00, unit=null), wifi_frequency=NestedDeviceData(labels=null, value=2447.0, unit=null), interface_name=NestedDeviceData(labels=null, value=wlan0, unit=null), dns1=NestedDeviceData(labels=null, value=10.0.2.3, unit=null), mobile_ipv4=NestedDeviceData(labels=null, value=[10.0.2.16], unit=null), mobile_ipv6=NestedDeviceData(labels=null, value=[FE80::15:B2FF:FE00:0, FEC0::15:B2FF:FE00:0, FEC0::7C6C:1ED0:5B39:A5D], unit=null)}, name=network_signal_strength_and_link_info, category=system, source=io.shoonya.shoonyadpc), stringMeta=[Android]|[T-Mobile]|1|4G LTE|CONNECTED|&quot;AndroidWifi&quot;|4|52|02:15:b2:00:01:00|2447|wlan0|10.0.2.3|[10.0.2.16]|[FE80::15:B2FF:FE00:0, FEC0::15:B2FF:FE00:0, FEC0::7C6C:1ED0:5B39:A5D], topic=system, id=11, synced=false), DeviceDataEntity(createdTime=1670320534832, type=121, data=DeviceData(created_time=1670320534832, labels=null, type=121, metrics={mobile_data_download=NestedDeviceData(labels=null, value=5307539.0, unit=null), mobile_data_upload=NestedDeviceData(labels=null, value=79957.0, unit=null), total_data_download=NestedDeviceData(labels=null, value=4.2039541E7, unit=null), total_data_upload=NestedDeviceData(labels=null, value=973483.0, unit=null)}, name=mobile_data, category=system, source=io.shoonya.shoonyadpc), stringMeta=[5307539, 79957, 42039541, 973483], topic=system, id=13, synced=false), DeviceDataEntity(createdTime=1670320535833, type=121, data=DeviceData(created_time=1670320535833, labels=null, type=121, metrics={mobile_data_download=NestedDeviceData(labels=null, value=5307539.0, unit=null), mobile_data_upload=NestedDeviceData(labels=null, value=79957.0, unit=null), total_data_download=NestedDeviceData(labels=null, value=4.2041622E7, unit=null), total_data_upload=NestedDeviceData(labels=null, value=973997.0, unit=null)}, name=mobile_data, category=system, source=io.shoonya.shoonyadpc), stringMeta=[5307539, 79957, 42041622, 973997], topic=system, id=16, synced=false), DeviceDataEntity(createdTime=1670320534847, type=123</stringProp>
+        </org.apache.jmeter.protocol.mqtt.sampler.PublisherSampler>
+        <hashTree/>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
